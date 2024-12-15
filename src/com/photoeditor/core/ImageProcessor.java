@@ -117,16 +117,13 @@ public class ImageProcessor {
     }
 
     public static Mat flip(Mat src, int flipCode) {
-        // flipCode: 0 상하, 1 좌우, -1 상하좌우
         Mat dst = new Mat();
         Core.flip(src, dst, flipCode);
         return dst;
     }
 
     public static Mat alphaBlend(Mat src1, Mat src2, double alpha) {
-        // 두 이미지 크기가 같다고 가정, 다를 경우 resize 필요
         if (src1.size().equals(src2.size()) == false) {
-            // 크기가 다르면 src2를 src1 크기로 맞춤
             Mat resized = new Mat();
             Imgproc.resize(src2, resized, src1.size());
             src2 = resized;
